@@ -46,9 +46,10 @@ public class Node {
         Node currentNode = null;
         Stack<Node> stack = new Stack<>();
 
-        BufferedReader reader = new BufferedReader(new FileReader(filename));
-        String line;
-        while ((line = reader.readLine()) != null) {
+        File file = new File(filename);
+        Scanner scanner = new Scanner(file);
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
             int level = 0;
             while (line.charAt(level) == ' ') {
                 level++;
@@ -78,7 +79,7 @@ public class Node {
             }
         }
 
-        reader.close();
+        scanner.close();
         return root;
     }
 
